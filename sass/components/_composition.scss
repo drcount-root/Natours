@@ -1,0 +1,91 @@
+.composition {
+  position: relative;
+
+  &__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.4);
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+    transition: all 0.2s, border-radius 0s;
+    outline-offset: 1rem;
+
+    @include respond(tab-port) {
+      position: relative;
+      float: left;
+      width: (100% / 3);
+      box-shadow: 0 1.5rem 3rem rgba($color-black, 0.2);
+    }
+
+    &--p1 {
+      left: 0;
+      top: -2rem;
+      transform: rotate(-5deg);
+
+      @include respond(tab-port) {
+        top: 0;
+        transform: scale(1.2);
+      }
+    }
+
+    &--p2 {
+      right: 0;
+      top: 2rem;
+      transform: rotate(5deg);
+
+      @include respond(tab-port) {
+        top: -1rem;
+        transform: scale(1.3);
+      }
+    }
+
+    &--p3 {
+      left: 20%;
+      top: 10rem;
+
+      @include respond(tab-port) {
+        top: 1rem;
+        left: 0;
+        transform: scale(1.1);
+      }
+    }
+
+    &:hover {
+      border-radius: 0;
+      outline: 1.5rem double rgba($color-primary, 0.5);
+      transform: scale(1.05) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem rgba($color-black, 0.5);
+      z-index: 20;
+
+      @include respond(tab-port) {
+        outline: none;
+        transform: scale(2);
+        box-shadow: 0 2.5rem 3rem rgba($color-black, 0.3);
+      }
+    }
+  }
+
+  &:hover &__photo--p1:not(:hover) {
+    transform: rotate(-5deg) scale(0.95);
+
+    @include respond(tab-port) {
+      transform: scale(1.2);
+    }
+  }
+
+  &:hover &__photo--p2:not(:hover) {
+    transform: rotate(5deg) scale(0.95);
+
+    @include respond(tab-port) {
+      transform: scale(1.3);
+    }
+  }
+
+  &:hover &__photo--p3:not(:hover) {
+    transform: scale(0.95);
+
+    @include respond(tab-port) {
+      transform: scale(1.1);
+    }
+  }
+}
